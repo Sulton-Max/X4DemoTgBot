@@ -452,3 +452,7 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+## Log files 
+*log*
+log[0-9]+.txt
