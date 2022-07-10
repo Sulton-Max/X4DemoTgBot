@@ -54,12 +54,13 @@ namespace DemoBot.Services
         }
 
         public async Task StopAsync(CancellationToken cancellationToken)
-        {
+        { 
             _logger.LogInformation("Removing webhook");
             using var scope = _serviceProvider.CreateScope();
             var botClient = _serviceProvider.GetService(typeof(ITelegramBotClient)) as ITelegramBotClient
                 ?? throw new InvalidOperationException($"Service request failed for service {nameof(ITelegramBotClient)}");
-            
+
+            await botClient.DeleteWebhookAsync(false, cancellationToken);
             await botClient.SendTextMessageAsync
             (
                 chatId: "760059843",
